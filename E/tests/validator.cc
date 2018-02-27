@@ -1,2 +1,70 @@
-int main() {
+#include "./testlib.h"
+#include "./constraints.hpp"
+#include <cassert>
+#include <queue>
+using namespace std;
+
+vector<int> g[MAX_N];
+
+bool isConnected(int n){
+    bool isVisited[MAX_N] = {0};
+    queue<int> q;
+
+    isVisited[0] = 1;
+    q.push(0);
+
+    int u;
+    while(not q.empty()){
+        u = q.front(); q.pop();
+        for(int i = 0; i < (int)g[u].size(); i++){
+            int next = g[u][i];
+            if(isVisited[next] == 0){
+                q.push(next);
+                isVisited[next] = 1;
+            }
+        }
+    }
+    for(int i = 0; i < n; i++){
+        if(isVisited[i] == 0) return false;
+    }
+    return true;
 }
+
+int main(){
+	registerValidation();
+
+    int N = inf.readInt(MIN_N, MAX_N);
+    inf.readSpace();
+    int M = inf.readInt(MIN_M, MAX_M);
+    inf.readSpace();
+	int s = inf.readInt(1, N);
+    inf.readSpace();
+	int t = inf.readInt(1, N);
+    inf.readEoln();
+
+	assert(s != t);
+
+    for(int i = 0; i < M; i++){
+        int a = inf.readInt(1,N);
+        inf.readSpace();
+        int b = inf.readInt(1,N);
+        inf.readSpace();
+        int c = inf.readInt(1,N);
+        inf.readEoln();
+
+        a--; b--;
+        g[a].emplace_back(b);
+        g[b].emplace_back(a);
+
+        g[a].emplace_back(c);
+        g[c].emplace_back(a);
+
+        g[b].emplace_back(c);
+        g[c].emplace_back(b);
+    }
+
+    assert(isConnected(N));
+
+	inf.readEof();
+}
+
