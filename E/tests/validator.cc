@@ -6,12 +6,12 @@ using namespace std;
 
 vector<int> g[MAX_N];
 
-bool isConnected(int n){
+bool isConnected(int n, int s, int t){
     bool isVisited[MAX_N] = {0};
     queue<int> q;
 
-    isVisited[0] = 1;
-    q.push(0);
+    isVisited[s] = 1;
+    q.push(s);
 
     int u;
     while(not q.empty()){
@@ -24,10 +24,7 @@ bool isConnected(int n){
             }
         }
     }
-    for(int i = 0; i < n; i++){
-        if(isVisited[i] == 0) return false;
-    }
-    return true;
+    return isVisited[t];
 }
 
 int main(){
@@ -52,6 +49,9 @@ int main(){
         int c = inf.readInt(1,N);
         inf.readEoln();
 
+		assert(a <= b);
+		assert(b <= c);
+
         a--; b--;
         g[a].emplace_back(b);
         g[b].emplace_back(a);
@@ -63,8 +63,7 @@ int main(){
         g[c].emplace_back(b);
     }
 
-    assert(isConnected(N));
+    assert(isConnected(N, s, t));
 
 	inf.readEof();
 }
-
