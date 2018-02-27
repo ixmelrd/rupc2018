@@ -28,7 +28,7 @@ int main(){
         inf.readSpace();
         int S = inf.readInt(MIN_S,N);
         inf.readSpace();
-        int T = inf.readInt(MIN_B,N);
+        int T = inf.readInt(MIN_T,N);
         inf.readEoln();
     }
 
