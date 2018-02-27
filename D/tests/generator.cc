@@ -88,7 +88,7 @@ void case_53_Nmax_Mmax() {
 }
 
 int main() {
-  rnd.setSeed(time(0) + getpid());
+  rnd.setSeed(time(nullptr) + getpid());
   case_50_small();
   case_51_large();
   case_52_Mmin();
