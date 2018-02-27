@@ -1,0 +1,14 @@
+#define MIN_N 2
+#define MAX_N 100000
+#define MIN_M 1
+#define MAX_M 100000
+#define MIN_Q 1
+#define MAX_Q 100000
+#define MIN_D 1
+#define MAX_D 1000000000
+#define MIN_E 1
+#define MAX_E 1000000000
+#define MIN_A 1
+#define MIN_B 1
+#define MIN_S 1
+#define MIN_T 1
