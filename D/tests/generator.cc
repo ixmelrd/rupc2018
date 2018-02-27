@@ -22,7 +22,7 @@ void case_50_small() {
     int N = rnd.next(MIN_N, 20);
     int M = rnd.next(MIN_M, N);
     vector<int> a(N);
-    for(auto &x : a) x = rnd.next(MIN_a, 20);
+    for(int &x : a) x = rnd.next(MIN_a, 20);
     output(N, M, a, "50_small", num);
   }
 }
@@ -32,7 +32,7 @@ void case_51_large() {
     int N = rnd.next(MIN_N, MAX_N);
     int M = rnd.next(MIN_M, N);
     vector<int> a(N);
-    for(auto &x : a) x = rnd.next(MIN_a, MAX_a);
+    for(int &x : a) x = rnd.next(MIN_a, MAX_a);
     output(N, M, a, "51_large", num);
   }
 }
@@ -42,7 +42,7 @@ void case_52_Mmin() {
     int N = rnd.next(MIN_N, MAX_N);
     int M = MIN_M;
     vector<int> a(N);
-    for(auto &x : a) x = rnd.next(MIN_a, MAX_a);
+    for(int &x : a) x = rnd.next(MIN_a, MAX_a);
     output(N, M, a, "52_Mmin", num);
   }
 }
@@ -52,7 +52,7 @@ void case_52_Nmin() {
     int N = MIN_N;
     int M = rnd.next(MIN_M, N);
     vector<int> a(N);
-    for(auto &x : a) x = rnd.next(MIN_a, MAX_a);
+    for(int &x : a) x = rnd.next(MIN_a, MAX_a);
     output(N, M, a, "52_Nmin", num);
   }
 }
@@ -62,7 +62,7 @@ void case_53_Mmax() {
     int N = rnd.next(MIN_N, MAX_N);
     int M = N;
     vector<int> a(N);
-    for(auto &x : a) x = rnd.next(MIN_a, MAX_a);
+    for(int &x : a) x = rnd.next(MIN_a, MAX_a);
     output(N, M, a, "53_Mmax", num);
   }
 }
@@ -72,7 +72,7 @@ void case_53_Nmax() {
     int N = MAX_N;
     int M = rnd.next(MIN_M, N);
     vector<int> a(N);
-    for(auto &x : a) x = rnd.next(MIN_a, MAX_a);
+    for(int &x : a) x = rnd.next(MIN_a, MAX_a);
     output(N, M, a, "53_Nmax", num);
   }
 }
@@ -82,7 +82,7 @@ void case_53_Nmax_Mmax() {
     int N = MAX_N;
     int M = N;
     vector<int> a(N);
-    for(auto &x : a) x = rnd.next(MIN_a, MAX_a);
+    for(int &x : a) x = rnd.next(MIN_a, MAX_a);
     output(N, M, a, "53_Nmax_Mmax", num);
   }
 }
