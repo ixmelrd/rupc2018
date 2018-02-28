@@ -53,7 +53,7 @@ int main(){
 		assert(a <= b);
 		assert(b <= c);
 
-        a--; b--;
+        a--; b--; c--;
         g[a].emplace_back(b);
         g[b].emplace_back(a);
 
