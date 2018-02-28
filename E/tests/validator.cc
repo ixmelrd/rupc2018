@@ -2,6 +2,7 @@
 #include "./constraints.hpp"
 #include <cassert>
 #include <queue>
+#include <iostream>
 using namespace std;
 
 vector<int> g[MAX_N];
@@ -63,7 +64,7 @@ int main(){
         g[c].emplace_back(b);
     }
 
-    assert(isConnected(N, s, t));
+    assert(isConnected(N, s - 1, t - 1));
 
 	inf.readEof();
 }
