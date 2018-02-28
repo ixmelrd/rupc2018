@@ -95,11 +95,11 @@ void case_54_eaten() {
 int main(){
 	rnd.setSeed(time(0)+getpid());
 
-	//case_50_ramdom_small();
+	case_50_ramdom_small();
 	case_51_ramdom_large();
-	//case_52_minimum();
-	//case_53_maximum();
-	//case_54_eaten();		// getArrayで作った数列から、ある一箇所だけランダムに選んだ数値に置き換え
-	//
-	//case_60_challenge();	//全部同じ数値
+	case_52_minimum();
+	case_53_maximum();
+	case_54_eaten();		// getArrayで作った数列から、ある一箇所だけランダムに選んだ数値に置き換え
+	
+	case_60_challenge();	//全部同じ数値
 }
