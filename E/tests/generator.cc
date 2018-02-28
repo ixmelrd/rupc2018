@@ -38,7 +38,7 @@ void gen_random(const int N, const int M, int &s, int &t, vector<int> &a, vector
     vertices.resize(hops - 1);
     vertices.emplace_front(s);
     vertices.emplace_back(t);
-    loop(i, 1, hops) {
+    loop(i, 1, hops + 1) {
       array<int, 3> r;
       r[0] = vertices[i - 1];
       r[1] = vertices[i];
