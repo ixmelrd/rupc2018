@@ -49,7 +49,7 @@ void gen_random(const int N, const int M, int &s, int &t, vector<int> &a, vector
       c.emplace_back(r[2]);
     }
   }
-  while(a.size() < M) {
+  while (a.size() < M) {
     array<int, 3> r;
     rep(j, 3) r[j] = rnd.next(MIN_abc, N);
     sort(r.begin(), r.end());
@@ -149,7 +149,7 @@ void case_53_Nmax_Mmax() {
 
 void case_60_complete_graph() {
   rep(num, 10) {
-    int N = rnd.next(MIN_N, (int)sqrt(MAX_M * 2));
+    int N = rnd.next(MIN_N, static_cast<int>(sqrt(MAX_M * 2)));
     int M = N * (N - 1) / 2;
     int s = rnd.next(MIN_s, N);
     int t = rnd.next(MIN_t, N - 1);
