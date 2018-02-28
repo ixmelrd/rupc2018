@@ -22,6 +22,7 @@ int main() {
   }
   vector<int> c(n, a[0]), d(n);
   rep(i, n) d[i] = b.count(a[i]) ? a[0] : a[1];
+  cout << "No" << endl;
   rep(i, n) cout << c[i] << " \n"[i == n - 1];
   rep(i, n) cout << d[i] << " \n"[i == n - 1];
 }
