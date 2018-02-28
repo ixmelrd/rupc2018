@@ -58,7 +58,7 @@ void case_50_ramdom_small() {
 }
 
 void case_51_ramdom_large() {
-	rep(num, 1) {
+	rep(num, 10) {
 		int N = rnd.next(MIN_N, MAX_N);
 		output(N, getArray(N, MAX_A), "50_ramdom_large", num);
 	}
@@ -77,18 +77,25 @@ void case_53_maximum() {
 	}
 }
 
+void case_54_eaten() {
+	rep(num, 5) {
+		int N = rnd.next(MIN_N, MAX_N);
+		vector<int> A = getArray(N, MAX_A);
+		A[rnd.next(0, N - 1)] = rnd.next(MIN_A, MAX_A);
+		output(N, A, "54_eaten", num);
+	}
+}
+
 void case_60_challenge() {
 	int N = MAX_N;
 	vector<int> A(N, rnd.next(MIN_A, MAX_A));
 	output(N, A, "60_challenge", 0);
 }
 
-void case_54_eaten() {
-	rep(num, 10) {
-		int N = rnd.next(MIN_N, MAX_N);
-		vector<int> A = getArray(N, MAX_A);
-		A[rnd.next(0, N - 1)] = rnd.next(MIN_A, MAX_A);
-		output(N, A, "54_eaten", num);
+void case_61_challenge() {
+	rep(num, 5) {
+		int N = MAX_N;
+		output(N, getArray(N, 3), "61_challenge", num);
 	}
 }
 
@@ -101,5 +108,6 @@ int main(){
 	case_53_maximum();
 	case_54_eaten();		// getArrayで作った数列から、ある一箇所だけランダムに選んだ数値に置き換え
 	
-	case_60_challenge();	//全部同じ数値
+	case_60_challenge();	// 全部同じ数値
+	case_61_challenge();	// {1,2,3}の数値しか出てこないケース
 }
