@@ -28,8 +28,8 @@ public:
 };
 
 struct query {
-  int d, type, a, b;
-  query(const int d, const int type, const int a, const int b) : d(d), type(type), a(a), b(b) {}
+  int id, type, d, a, b;
+  query(const int id, const int type, const int d, const int a, const int b) : id(id), type(type), d(d), a(a), b(b) {}
 };
 
 bool operator<(const query &a, const query &b) { return a.d < b.d; }
@@ -42,20 +42,22 @@ int main() {
   rep(i, m) {
     int d, a, b;
     cin >> d >> a >> b;
-    v.emplace_back(d, 0, --a, --b);
+    v.emplace_back(0, 0, d, --a, --b);
   }
   rep(i, q) {
     int e, s, t;
     cin >> e >> s >> t;
-    v.emplace_back(e, 1, --s, --t);
+    v.emplace_back(i, 1, e, --s, --t);
   }
   sort(v.begin(), v.end());
+  vector<int> ans(q);
   UFTree uf(n);
   for (auto &p : v) {
     if (p.type == 0) {
       loop(i, p.a, p.b) uf.unite(i, i + 1);
     } else {
-      cout << (p.b <= p.a || uf.same(p.a, p.b) ? "YES" : "NO") << endl;
+      ans[p.id] = p.b <= p.a || uf.same(p.a, p.b);
     }
   }
+  for(auto &x: ans) cout << (x ? "YES" : "NO") << endl;
 }
