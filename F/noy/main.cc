@@ -129,8 +129,7 @@ int main() {
 		//for (int i = 0; i < N; i++) { if(i) cout << ' '; cout << mini.get(i); } cout << endl;
 
 		auto& p = q[i];
-		if (p.s > p.t) p.ans = true;
-		else p.ans = maxi.get(p.s - 1) >= p.t ? true : false;
+		p.ans = maxi.get(p.s - 1) >= p.t ? true : false;
 	}
 
 	sort(q.begin(), q.end(), [](const Query& l, const Query& r){ return l.id < r.id; });
