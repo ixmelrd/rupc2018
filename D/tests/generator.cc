@@ -19,7 +19,7 @@ void output(const int N, const int M, const vector<int> &a, const string &prefix
 
 void case_50_small() {
   rep(num, 10) {
-    int N = rnd.next(MIN_N, 20);
+    int N = rnd.next(MIN_N, 10);
     int M = rnd.next(MIN_M, N);
     vector<int> a(N);
     for (int &x : a) x = rnd.next(MIN_a, 20);
