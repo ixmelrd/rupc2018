@@ -31,7 +31,7 @@ vector<int> getArray(int N, int max_a){
 	random_device seed_gen;
 	mt19937 engine(seed_gen());
 
-	vector<int> res(N);
+	vector<int> res(N,rnd.next(MIN_A, max_a));
 	int l = 0, r = N - 1;
 	while(r - l > 1){
 		int size = rnd.next(1, (r - l + 1) / 2);
