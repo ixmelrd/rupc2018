@@ -71,7 +71,6 @@ int main() {
     } else {
       vector<int> done(n);
       queue<int> que;
-      done[p.a] = true;
       for (que.emplace(p.a); que.size(); que.pop()) {
         int u = que.front();
         if (u == p.b) {
