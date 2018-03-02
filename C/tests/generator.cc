@@ -60,7 +60,7 @@ void case_50_ramdom_small() {
 void case_51_ramdom_large() {
 	rep(num, 10) {
 		int N = rnd.next(MIN_N, MAX_N);
-		output(N, getArray(N, MAX_A), "50_ramdom_large", num);
+		output(N, getArray(N, MAX_A), "51_ramdom_large", num);
 	}
 }
 
