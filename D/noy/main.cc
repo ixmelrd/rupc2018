@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <iomanip>
+#include <cassert>
 using namespace std;
 
 // [l, r) の区間の平均を返す
@@ -28,7 +29,7 @@ int main() {
 	}
 
 	// dp[i][j] := 区間[0, i]を j 回圧縮したときの数列の総和の最大値
-	vector<vector<double>> dp(n + 1, vector<double>(n,-1e8));
+	vector<vector<double>> dp(n + 1, vector<double>(n + 1,-1e8));
 	dp[0][0] = 0;
 	for (int i = 1; i <= n; i++) {					// i-index
 		for (int com = 1; com <= i; com++) {		// 圧縮回数
