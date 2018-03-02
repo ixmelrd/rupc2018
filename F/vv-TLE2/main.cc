@@ -84,5 +84,5 @@ int main() {
       }
     }
   }
-  for(auto &x: ans) cout << (x ? "YES" : "NO") << endl;
+  for(auto &x: ans) cout << (x ? "Yes" : "No") << endl;
 }

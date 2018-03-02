@@ -59,5 +59,5 @@ int main() {
       ans[p.id] = p.b <= p.a || uf.same(p.a, p.b);
     }
   }
-  for(auto &x: ans) cout << (x ? "YES" : "NO") << endl;
+  for(auto &x: ans) cout << (x ? "Yes" : "No") << endl;
 }
