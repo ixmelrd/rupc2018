@@ -20,7 +20,7 @@ int hout(int l){
   return rt;
 }
 int main(){
-  int n,d[100010],c=0,i;
+  int n,d[100010],f=0,i;
   R[0]=R[1]=C[0]=C[1]=1;
   scanf("%d",&n);
   for(i=0;i<n;i++)scanf("%d",&d[i]);
@@ -32,9 +32,13 @@ int main(){
       hout(0);
       hout(1);
     }
-    if(C[0]==1)c++;
+    if(C[0]==1){
+      if(f)printf(" ");
+      printf("%d",i+1);
+      f=1;
+    }
     //printf("%d %d\n",C[0],i);
   }
-  printf("%d\n",c);
+  printf("\n");
   return 0;
 }
