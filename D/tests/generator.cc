@@ -89,8 +89,8 @@ void case_53_Nmax_Mmax() {
 
 void case_60_constant() {
   rep(num, 10) {
-    int N = num == 0 ? 79 : rnd.next(MIN_N, MAX_N);
-    int M = num == 0 ? 1 : rnd.next(MIN_M, N);
+    int N = rnd.next(MIN_N, MAX_N);
+    int M = rnd.next(MIN_M, N);
     vector<int> a(N, rnd.next(MIN_a, MAX_a));
     output(N, M, a, "60_constant", num);
   }
