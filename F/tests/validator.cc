@@ -32,8 +32,6 @@ int main(){
         inf.readSpace();
         int T = inf.readInt(MIN_T,N);
         inf.readEoln();
-
-		assert(S < T);
     }
 
 	inf.readEof();
