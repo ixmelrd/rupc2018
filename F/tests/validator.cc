@@ -21,6 +21,8 @@ int main(){
         inf.readSpace();
         int B = inf.readInt(MIN_B,N);
         inf.readEoln();
+
+		assert(A < B);
     }
 
     for(int i = 0; i < Q; i++){
@@ -30,6 +32,8 @@ int main(){
         inf.readSpace();
         int T = inf.readInt(MIN_T,N);
         inf.readEoln();
+
+		assert(S < T);
     }
 
 	inf.readEof();
