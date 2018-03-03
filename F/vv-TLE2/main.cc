@@ -66,7 +66,6 @@ int main() {
   vector<int> ans(q);
   for (auto &p : v) {
     if (p.type == 0) {
-      if (p.b < p.a) swap(p.a, p.b);
       g.addArc(p.a, p.b);
     } else {
       vector<int> done(n);
