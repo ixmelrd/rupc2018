@@ -7,6 +7,7 @@ int n;
 int a[100000];
 int ans[100000];
 int c;
+int acc;
 map<int, int> m;
 
 int main() {
@@ -15,7 +16,7 @@ int main() {
   for (i = 0; i < n; i++) {
     m[a[i]]++;
     m[a[n - 1 - i]]--;
-    int acc = 0;
+    acc = 0;
     for (auto &p : m) acc |= p.second;
     if (acc == 0) ans[c++] = i + 1;
   }
