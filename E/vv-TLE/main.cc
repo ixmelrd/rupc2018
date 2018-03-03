@@ -1,9 +1,6 @@
 #include <iostream>
-#include <limits>
-#include <numeric>
 #include <queue>
 #include <tuple>
-#include <vector>
 #define loop(i, a, n) for (i = (a); i < (n); i++)
 #define rep(i, n) loop(i, 0, n)
 constexpr int INF = 1000000000;
