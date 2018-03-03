@@ -1,12 +1,11 @@
 #include<stdio.h>
 double MAX(double a,double b){return a<b?b:a;}
 int main(){
-  int n,m,i,j,k;
+  int n,m,i,j,k,s[510]={};
   double d[510][510]={};
-  long long s[510]={};
   scanf("%d %d",&n,&m);
   for(i=0;i<n;i++){
-    scanf("%lld",&s[i+1]);
+    scanf("%d",&s[i+1]);
     s[i+1]+=s[i];
   }
   if(m==1){
