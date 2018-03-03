@@ -1,6 +1,7 @@
 #include <iomanip>
 #include <iostream>
 #include <vector>
+#define int long long
 #define loop(i, a, n) for (int i = (a); i < (n); i++)
 #define rep(i, n) loop(i, 0, n)
 template<typename A, typename B> void cmax(A &a, const B &b) {
@@ -37,7 +38,7 @@ template<typename T> struct sumGroup {
   constexpr value_type inv(const value_type &x) { return -x; }
 };
 
-int main() {
+signed main() {
   int n, m;
   cin >> n >> m;
   vector<int> a(n);

@@ -13,13 +13,13 @@ int main() {
 	int n, m;
 	cin >> n >> m;
 
-	vector<int> a(n);
+	vector<double> a(n);
 	for (int i = 0; i < n; i++) {
 		cin >> a[i];
 	}
 
 	if (n == 1) {
-		cout << a[0] << endl;
+		cout << fixed << setprecision(5) << a[0] << endl;
 		return 0;
 	}
 
@@ -29,7 +29,7 @@ int main() {
 	}
 
 	// dp[i][j] := 区間[0, i]を j 回圧縮したときの数列の総和の最大値
-	vector<vector<double>> dp(n + 1, vector<double>(n + 1,-1e8));
+	vector<vector<double>> dp(n + 1, vector<double>(n + 1,-1e9));
 	dp[0][0] = 0;
 	for (int i = 1; i <= n; i++) {					// i-index
 		for (int com = 1; com <= i; com++) {		// 圧縮回数
