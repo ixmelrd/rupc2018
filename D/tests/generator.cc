@@ -96,6 +96,15 @@ void case_60_constant() {
   }
 }
 
+void case_61_overflow() {
+  rep(num, 10) {
+    int N = MAX_N - num * rnd.next(1, 3);
+    int M = N - num * rnd.next(1, 3);
+    vector<int> a(N, MAX_a);
+    output(N, M, a, "61_overflow", num);
+  }
+}
+
 int main() {
   rnd.setSeed(time(nullptr) + getpid());
   case_50_small();
@@ -106,4 +115,5 @@ int main() {
   case_53_Nmax();
   case_53_Nmax_Mmax();
   case_60_constant();
+  case_61_overflow();
 }
