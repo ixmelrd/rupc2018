@@ -62,7 +62,7 @@ void gen_random(const int N, const int M, int &s, int &t, vector<int> &a, vector
 void case_50_small() {
   rep(num, 10) {
     int N = rnd.next(MIN_N, 10);
-    int M = rnd.next(MIN_M, 20);
+    int M = rnd.next(MIN_M, 7);
     int s, t;
     vector<int> a, b, c;
     gen_random(N, M, s, t, a, b, c);
