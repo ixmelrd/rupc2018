@@ -12,5 +12,6 @@ int main() {
   rep(i, n - 1) loop(j, i + 1, n) {
     if ((a[i] - a[j]) % (n - 1)) continue;
     cout << a[i] << ' ' << a[j] << endl;
+    return 0;
   }
 }
