@@ -13,8 +13,6 @@ int main(){
     printf("%.10lf\n",1.0*s[n]/n);
     return 0;
   }
-  //s[n+1]=s[n];
-  //for(i=0;i<=n+1;i++)printf("%d ",s[i]);printf("\n");
   for(i=1;i<n;i++){
     double e[510][510]={};
     for(j=0;j<m;j++){
@@ -31,10 +29,7 @@ int main(){
       //for(k=0;k<=n;k++)printf("%10lf ",d[j][k]);printf("\n");
     }//printf("\n");
   }
-  for(i=1;i<n-m+2;i++){
-    //printf("%lf %lf %lf\n",d[m-1][i]+1.0*(s[n]-s[n-i])/i,d[m-1][i],1.0*(s[n]-s[n-i])/(i));
-    d[m][0]=MAX(d[m][0],d[m-1][i]+1.0*(s[n]-s[n-i])/i);
-  }
+  for(i=1;i<n-m+2;i++)d[m][0]=MAX(d[m][0],d[m-1][i]+1.0*(s[n]-s[n-i])/i);
   /*for(i=0;i<=m;i++){
     for(j=0;j<=n;j++)printf("%lf ",d[i][j]);printf("\n");
     }//*/
