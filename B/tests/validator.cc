@@ -10,9 +10,9 @@ int main() {
   registerValidation();
   int N = inf.readInt(MIN_N, MAX_N);
   inf.readEoln();
-  set<int> as;
+  vector<int> a(N), b(N);
   rep(i, N) {
-    as.insert(inf.readInt(MIN_a, MAX_a));
+    a[i] = inf.readInt(MIN_a, MAX_a);
     if (i < N - 1) {
       inf.readSpace();
     } else {
@@ -20,7 +20,7 @@ int main() {
     }
   }
   rep(i, N) {
-    inf.readInt(MIN_b, MAX_b);
+    b[i] = inf.readInt(MIN_b, MAX_b);
     if (i < N - 1) {
       inf.readSpace();
     } else {
@@ -29,8 +29,16 @@ int main() {
   }
   inf.readEof();
 
-  if (as.size() != N) {
+  set<int> s(a.begin(), a.end());
+  if (s.size() != N) {
     cout << "Expected a_i is unique; Got duplication;" << endl;
     return 1;
+  }
+
+  rep(i, N) {
+    if (!s.count(b[i])) {
+      cout << "Set S does not contain b_" << i + 1 << "(=" << b[i] << ")" << endl;
+      return 1;
+    }
   }
 }
