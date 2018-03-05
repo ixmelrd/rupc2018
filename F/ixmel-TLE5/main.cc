@@ -61,7 +61,6 @@ void add(pii a){
 		return;
 	}
 	it--;
-	if(a.second<=it->second)return;
 	if(a.first<=it->second){
 		a.first=min(a.first,it->first);
 		data.erase(it);

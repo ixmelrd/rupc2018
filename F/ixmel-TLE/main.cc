@@ -51,30 +51,12 @@ int dx[]={0,1,0,-1};
 int dy[]={1,0,-1,0};
 set<pii>data;
 void add(pii a){
-	auto it=data.lower_bound({a.first,-1});
-	while(it!=data.end()&&it->first<=a.second){
-		a.second=max(a.second,it->second);
-		data.erase(it++);
-	}
-	if(it==data.begin()){
-		data.insert(a);
-		return;
-	}
-	it--;
-	if(a.second<=it->second)return;
-	if(a.first<=it->second){
-		a.first=min(a.first,it->first);
-		data.erase(it);
-	}
 	data.insert(a);
 }
 bool query(pii a){
 	bool h=false;
-	auto it=data.upper_bound({a.first,inf});
-	if(it!=data.begin()){
-		it--;
+	for(auto it=data.begin();it!=data.end();it++)
 		if(it->first<=a.first&&a.second<=it->second)h=true;
-	}
 	return h;
 }
 int main(){
@@ -101,6 +83,7 @@ int main(){
 		while(r<m&&in[r].first<t)add(in[r++].second);
 		if(query({x,y}))out[w]="Yes";
 	}
+
 	rep(i,q)cout<<out[i]<<endl;
 }
 
