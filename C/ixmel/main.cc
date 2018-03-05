@@ -59,20 +59,20 @@ int main(){
 	t.erase(unique(all(t)),t.end());
 	rep(i,n)in[i]=lower_bound(all(t),in[i])-t.begin();
 	
-	int N=t.size(),out=0,co=N;
-	vi a(N),b(N);
+	int N=t.size(),co=N;
+	vi a(N),b(N),out;
 	rep(i,n){
 		if(a[in[i]]==b[in[i]])co--;
 		a[in[i]]++;
 		if(a[in[i]]==b[in[i]])co++;
 
-		if(a[in[n-1-i]]==b[n-1-in[i]])co--;
+		if(a[in[n-1-i]]==b[in[n-1-i]])co--;
 		b[in[n-1-i]]++;
 		if(a[in[n-1-i]]==b[in[n-1-i]])co++;
 		
-		if(co==N)out++;
+		if(co==N)out.pb(i+1);
 	}
-	cout<<out<<endl;
+	rep(i,out.size())cout<<(i?" ":"")<<out[i];cout<<endl;
 }
 
 
