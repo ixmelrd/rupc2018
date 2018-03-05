@@ -50,6 +50,7 @@ Def inf = sizeof(Def) == sizeof(long long) ? 2e18 : 1e9+10;
 int dx[]={0,1,0,-1};
 int dy[]={1,0,-1,0};
 int main(){
+	
 }
 
 
