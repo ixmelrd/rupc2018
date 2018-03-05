@@ -67,6 +67,7 @@ void add(pii a){
 	data.insert(a);
 }
 bool query(pii a){
+	if(a.second<=a.first)return 1;
 	bool h=false;
 	for(auto it=data.begin();it!=data.end();it++)
 		if(it->first<=a.first&&a.second<=it->second)h=true;

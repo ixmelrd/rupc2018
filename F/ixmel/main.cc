@@ -69,6 +69,7 @@ void add(pii a){
 	data.insert(a);
 }
 bool query(pii a){
+	if(a.second<=a.first)return 1;
 	bool h=false;
 	auto it=data.upper_bound({a.first,inf});
 	if(it!=data.begin()){

@@ -57,8 +57,7 @@ void add(pii a){
 			a.first=min(a.first,it->first);
 			data.erase(it++);
 			it--;
-		}
-		if(a.first<=it->first&&it->first<=a.second){
+		}else if(a.first<=it->first&&it->first<=a.second){
 			a.second=max(a.second,it->second);
 			data.erase(it++);
 			it--;
@@ -67,6 +66,7 @@ void add(pii a){
 	data.insert(a);
 }
 bool query(pii a){
+	if(a.second<=a.first)return 1;
 	bool h=false;
 	for(auto it=data.begin();it!=data.end();it++)
 		if(it->first<=a.first&&a.second<=it->second)h=true;
