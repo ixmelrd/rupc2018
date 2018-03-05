@@ -56,9 +56,9 @@ int main(){
 	rep(i,n)cin>>in[i+1];
 	rep(i,n)in[i+1]+=in[i];
 	
-	vvd dp(n+1,vd(m+1,-1000000000000ll));
+	vvd dp(n+1,vd(m+1,-1000000010));
 	dp[0][0]=0;
-	rep(i,n)rep(j,m)loop(k,1,i+2)
+	rep(i,n)rep(j,i+1)loop(k,1,i+2)
 		dp[i+1][j+1]=max(dp[i+1][j+1],dp[i+1-k][j]+(in[i+1]-in[i+1-k])/k);
 
 	double out=0;
