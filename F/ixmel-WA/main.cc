@@ -57,8 +57,7 @@ void add(pii a){
 			a.first=it->first;
 			data.erase(it++);
 			it--;
-		}
-		if(a.first<=it->first&&it->first<=a.second){
+		}else if(a.first<=it->first&&it->first<=a.second){
 			a.second=it->second;
 			data.erase(it++);
 			it--;
