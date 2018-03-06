@@ -38,7 +38,7 @@ void set(int a,int b,int n,int m,int l,int r,int i){//セグ木m,[a,b)をnにす
 }
 int get(int n,int m){
   int a=E[m][n+T];
-  for(n+=T;E[m][n]+1;n/=2)a=E[m][n];
+  for(n+=T;n;n/=2)a=E[m][n]+1?E[m][n]:a;
   return a;
 }
 int main(){
@@ -61,7 +61,7 @@ int main(){
       }
       printf("%2d ",E[0][a]);
       }
-    printf("\n\n");
+      printf("\n\n");
     for(a=1;a<n;a++)printf("%d %d\n",get(a,0),get(a,1));
     printf("\n");//*/
     a=hout()-1;//printf("%d %d %d\n",a,s[a],t[a]);
