@@ -51,17 +51,15 @@ int dx[]={0,1,0,-1};
 int dy[]={1,0,-1,0};
 set<pii>data;
 void add(pii a){
-	for(auto it=data.begin();it!=data.end();it++){
+	for(auto it=data.begin();it!=data.end();){
 		if(it->first<=a.first&&a.second<=it->second)return;
 		if(a.first<=it->second&&it->second<=a.second){
 			a.first=it->first;
 			data.erase(it++);
-			it--;
 		}else if(a.first<=it->first&&it->first<=a.second){
 			a.second=it->second;
 			data.erase(it++);
-			it--;
-		}
+		}else it++;
 	}
 	data.insert(a);
 }
