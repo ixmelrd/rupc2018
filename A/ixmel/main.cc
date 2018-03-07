@@ -54,7 +54,7 @@ int main(){
 	cin>>n;
 	vi in(n);
 	rep(i,n)cin>>in[i];
-	rep(i,n)rep(j,n)if(abs(in[i]-in[j])%(n-1)){
+	rep(i,n)loop(j,i+1,n)if(abs(in[i]-in[j])%(n-1)==0){
 		cout<<in[i]<<" "<<in[j]<<endl;
 		return 0;
 	}
