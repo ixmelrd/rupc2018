@@ -9,6 +9,7 @@ int main() {
   registerValidation();
   string s = inf.readString();
   inf.readEof();
+
   int digitsOfN = static_cast<int>(s.size());
   if (digitsOfN < MIN_digits_of_N || MAX_digits_of_N < digitsOfN) {
     cerr << "Digits of N must be in [" << MIN_digits_of_N << ", " << MAX_digits_of_N << "]" << endl;
