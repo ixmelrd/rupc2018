@@ -42,8 +42,7 @@ int get(int n,int m){
   return a;
 }
 int main(){
-  int n,m,q,a,b,c,s[100010],t[100010],d[100010],i;
-  for(i=0;i<100010;i++)E[0][i]=E[1][i]=-1;
+  int n,m,q,a,b,c,s[200010],t[200010],d[100010],i;
   scanf("%d %d %d",&n,&m,&q);n++;
   init(n);/*
   for(i=0;i<n;i++){
