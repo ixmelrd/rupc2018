@@ -31,13 +31,13 @@ int main() {
 
   set<int> s(a.begin(), a.end());
   if (s.size() != N) {
-    cout << "Expected a_i is unique; Got duplication;" << endl;
+    cerr << "a_i must be unique" << endl;
     return 1;
   }
 
   rep(i, N) {
     if (!s.count(b[i])) {
-      cout << "Set S does not contain b_" << i + 1 << "(=" << b[i] << ")" << endl;
+      cerr << "Set S must contain b_" << i + 1 << "(=" << b[i] << ")" << endl;
       return 1;
     }
   }
