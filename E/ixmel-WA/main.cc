@@ -67,7 +67,7 @@ int main(){
 			else J=0;
 		(dp[I][J][K][L]+=dp[i][j][k][l])%=MOD;
 	}
-	cout<<(dp[n][4][0][0]+dp[n][4][1][0])%MOD<<endl;
+	cout<<dp[n][4][0][0]+dp[n][4][1][0]<<endl;
 }
 
 

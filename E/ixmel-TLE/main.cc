@@ -49,25 +49,28 @@ const double EPS=1e-7;
 Def inf = sizeof(Def) == sizeof(long long) ? 2e18 : 1e9+10;
 int dx[]={0,1,0,-1};
 int dy[]={1,0,-1,0};
-int dp[100010][5][2][2],MOD=1000000007;
-int main(){
-	dp[0][0][0][0]=1;
-	
-	string s,t="51*3";
-	cin>>s;
-	int n=s.size();
-	
-	rep(i,n)rep(j,5)rep(k,2)rep(l,2)rep(x,10){
-		if(!k&&s[i]-'0'<x)continue;
-		int I=i+1,J=j,K=k||(x<s[i]-'0'),L=j==2&&x==5;
-		if(J!=4)
-			if(J==2||t[J]-'0'==x)J++;
-			else if(l&&x==1)J=2;
-			else if(x==5)J=1;
-			else J=0;
-		(dp[I][J][K][L]+=dp[i][j][k][l])%=MOD;
+bool f(string s){
+	bool h=false;
+	string t="51*3";
+	rep(i,(int)s.size()-3){
+		bool H=true;
+		rep(j,4)
+			if(j!=2&&t[j]!=s[i+j])H=false;
+		if(H)h=true;
 	}
-	cout<<(dp[n][4][0][0]+dp[n][4][1][0])%MOD<<endl;
+	return h;
+}
+int main(){
+	ll n;
+	cin>>n;
+	if(n<0)return 0;
+	int out=0;
+	loop(i,5103,n+1){
+		if(i%100000==0)cout<<i<<endl;
+		string s=to_string(i);
+		out+=f(s);
+	}
+	cout<<out<<endl;
 }
 
 
