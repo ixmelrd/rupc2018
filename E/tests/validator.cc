@@ -22,7 +22,7 @@ int main() {
   }
 
   loop(i, 1, digitsOfN) {
-    if (s[i] < '0' || '9' < s[0]) {
+    if (s[i] < '0' || '9' < s[i]) {
       cerr << "Non most significant digit must be in [0, 9]" << endl;
       return 1;
     }
