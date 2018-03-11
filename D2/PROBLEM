@@ -6,7 +6,7 @@
 ##   id: The problem ID (typically starts from A) used to order problems.
 ##   time_limit: The time limit of this problem in seconds.
 problem(title = "",
-        id = "E",
-        reference_solution = "noy",
+        id = "D2",
+        reference_solution = "ixmel",
         time_limit = 1.0,
         )
