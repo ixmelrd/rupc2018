@@ -15,6 +15,11 @@ void MakeNum(int n,char *d){
   while(--n)d[n]=rnd.next(0,9)+'0';
   d[0]=rnd.next(1,9)+'0';
 }
+void challenge00(){
+  char s[]={"60_challenge_00.in"};
+  char d[]={"128516307106"};
+  out(d,s);
+}
 int main() {
   int i,n;
   char d[10010],s[100],g[5]={"5103"};
@@ -61,6 +66,7 @@ int main() {
     d[3]--;
     out(d,s);
   }
+  challenge00();
   return 0;
 }
 
