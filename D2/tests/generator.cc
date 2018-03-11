@@ -10,17 +10,17 @@ using namespace std;
 #define rep(i, n) loop(i, 0, n)
 
 void output(const int N, const int M, const int s, const int t,
-            const vector<int> &a, const vector<int> &b, const vector<int> &c,
+            const vector<int> &a, const vector<int> &b, const vector<int> &c, const vector<int> &d,
             const string &prefix, const int num = 0) {
   ostringstream os;
   os << prefix << '_' << setw(2) << setfill('0') << num << ".in";
   ofstream ofs(os.str());
   ofs << N << ' ' << M << ' ' << s << ' ' << t << '\n';
-  rep(i, M) ofs << a[i] << ' ' << b[i] << ' ' << c[i] << '\n';
+  rep(i, M) ofs << a[i] << ' ' << b[i] << ' ' << c[i] << ' ' << d[i] << '\n';
   ofs.close();
 }
 
-void gen_random(const int N, const int M, int &s, int &t, vector<int> &a, vector<int> &b, vector<int> &c) {
+void gen_random(const int N, const int M, int &s, int &t, vector<int> &a, vector<int> &b, vector<int> &c, vector<int> &d) {
   a.reserve(M);
   b.reserve(M);
   c.reserve(M);
@@ -57,6 +57,8 @@ void gen_random(const int N, const int M, int &s, int &t, vector<int> &a, vector
     b.emplace_back(r[1]);
     c.emplace_back(r[2]);
   }
+  d.resize(M);
+  for (int &x : d) x = rnd.next(MIN_d, MAX_d);
 }
 
 void case_50_small() {
@@ -64,9 +66,9 @@ void case_50_small() {
     int N = rnd.next(MIN_N, 10);
     int M = rnd.next(MIN_M, 7);
     int s, t;
-    vector<int> a, b, c;
-    gen_random(N, M, s, t, a, b, c);
-    output(N, M, s, t, a, b, c, "50_small", num);
+    vector<int> a, b, c, d;
+    gen_random(N, M, s, t, a, b, c, d);
+    output(N, M, s, t, a, b, c, d, "50_small", num);
   }
 }
 
@@ -75,9 +77,9 @@ void case_51_large() {
     int N = rnd.next(MIN_N, MAX_N);
     int M = rnd.next(MIN_M, MAX_M);
     int s, t;
-    vector<int> a, b, c;
-    gen_random(N, M, s, t, a, b, c);
-    output(N, M, s, t, a, b, c, "51_large", num);
+    vector<int> a, b, c, d;
+    gen_random(N, M, s, t, a, b, c, d);
+    output(N, M, s, t, a, b, c, d, "51_large", num);
   }
 }
 
@@ -86,9 +88,9 @@ void case_52_Mmin() {
     int N = rnd.next(MIN_N, MAX_N);
     int M = MIN_M;
     int s, t;
-    vector<int> a, b, c;
-    gen_random(N, M, s, t, a, b, c);
-    output(N, M, s, t, a, b, c, "52_Mmin", num);
+    vector<int> a, b, c, d;
+    gen_random(N, M, s, t, a, b, c, d);
+    output(N, M, s, t, a, b, c, d, "52_Mmin", num);
   }
 }
 
@@ -97,9 +99,9 @@ void case_52_Nmin() {
     int N = MIN_N;
     int M = rnd.next(MIN_M, MAX_M);
     int s, t;
-    vector<int> a, b, c;
-    gen_random(N, M, s, t, a, b, c);
-    output(N, M, s, t, a, b, c, "52_Nmin", num);
+    vector<int> a, b, c, d;
+    gen_random(N, M, s, t, a, b, c, d);
+    output(N, M, s, t, a, b, c, d, "52_Nmin", num);
   }
 }
 
@@ -108,9 +110,9 @@ void case_52_Nmin_Mmin() {
     int N = MIN_N;
     int M = MIN_M;
     int s, t;
-    vector<int> a, b, c;
-    gen_random(N, M, s, t, a, b, c);
-    output(N, M, s, t, a, b, c, "52_Nmin_Mmin", num);
+    vector<int> a, b, c, d;
+    gen_random(N, M, s, t, a, b, c, d);
+    output(N, M, s, t, a, b, c, d, "52_Nmin_Mmin", num);
   }
 }
 
@@ -119,9 +121,9 @@ void case_53_Mmax() {
     int N = rnd.next(MIN_N, MAX_N);
     int M = MAX_M;
     int s, t;
-    vector<int> a, b, c;
-    gen_random(N, M, s, t, a, b, c);
-    output(N, M, s, t, a, b, c, "53_Mmax", num);
+    vector<int> a, b, c, d;
+    gen_random(N, M, s, t, a, b, c, d);
+    output(N, M, s, t, a, b, c, d, "53_Mmax", num);
   }
 }
 
@@ -130,9 +132,9 @@ void case_53_Nmax() {
     int N = MAX_N;
     int M = rnd.next(MIN_M, MAX_M);
     int s, t;
-    vector<int> a, b, c;
-    gen_random(N, M, s, t, a, b, c);
-    output(N, M, s, t, a, b, c, "53_Nmax", num);
+    vector<int> a, b, c, d;
+    gen_random(N, M, s, t, a, b, c, d);
+    output(N, M, s, t, a, b, c, d, "53_Nmax", num);
   }
 }
 
@@ -141,9 +143,9 @@ void case_53_Nmax_Mmax() {
     int N = MAX_N;
     int M = MAX_M;
     int s, t;
-    vector<int> a, b, c;
-    gen_random(N, M, s, t, a, b, c);
-    output(N, M, s, t, a, b, c, "53_Nmax_Mmax", num);
+    vector<int> a, b, c, d;
+    gen_random(N, M, s, t, a, b, c, d);
+    output(N, M, s, t, a, b, c, d, "53_Nmax_Mmax", num);
   }
 }
 
@@ -170,7 +172,9 @@ void case_60_complete_graph() {
         c.emplace_back(r[2]);
       }
     }
-    output(N, M, s, t, a, b, c, "60_complete_graph", num);
+    vector<int> d(M);
+    for (int &x : d) x = rnd.next(MIN_d, MAX_d);
+    output(N, M, s, t, a, b, c, d, "60_complete_graph", num);
   }
 }
 
@@ -195,7 +199,9 @@ void case_60_path_graph() {
       b.emplace_back(r[1]);
       c.emplace_back(r[2]);
     }
-    output(N, M, s, t, a, b, c, "60_path_graph", num);
+    vector<int> d(M);
+    for (int &x : d) x = rnd.next(MIN_d, MAX_d);
+    output(N, M, s, t, a, b, c, d, "60_path_graph", num);
   }
 }
 
@@ -222,7 +228,9 @@ void case_60_star_graph() {
       b.emplace_back(r[1]);
       c.emplace_back(r[2]);
     }
-    output(N, M, s, t, a, b, c, "60_star_graph", num);
+    vector<int> d(M);
+    for (int &x : d) x = rnd.next(MIN_d, MAX_d);
+    output(N, M, s, t, a, b, c, d, "60_star_graph", num);
   }
 }
 
@@ -247,7 +255,9 @@ void case_60_tree_graph() {
       b.emplace_back(r[1]);
       c.emplace_back(r[2]);
     }
-    output(N, M, s, t, a, b, c, "60_tree_graph", num);
+    vector<int> d(M);
+    for (int &x : d) x = rnd.next(MIN_d, MAX_d);
+    output(N, M, s, t, a, b, c, d, "60_tree_graph", num);
   }
 }
 
