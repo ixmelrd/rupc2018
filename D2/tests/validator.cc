@@ -48,6 +48,8 @@ int main(){
         int b = inf.readInt(1,N);
         inf.readSpace();
         int c = inf.readInt(1,N);
+        inf.readSpace();
+        int d = inf.readInt(1,MAX_d);
         inf.readEoln();
 
 		assert(a <= b);
