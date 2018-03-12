@@ -2,6 +2,7 @@
 #include <vector>
 #include <numeric>
 #include <functional>
+#include <algorithm>
 using namespace std;
 
 const int MAX_N = 100000;
