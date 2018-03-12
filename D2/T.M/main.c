@@ -21,49 +21,44 @@ int hout(){
   H[j/2]=k;
   return rt;
 }
-void add(int a,int b,int c,int n){
+void add(int a,int b,int c){
   nt[r]=ta[a];
   to[r]=b;
-  cu[r]=r+n;
   co[ta[a]=r++]=c;
 }
 int main(){
-  int n,m,s,t,i,j,k,ans=1e9,mi;
+  int n,m,s,t,i,j,k,mi;
   scanf("%d %d %d %d",&n,&m,&s,&t);
-  for(i=0;i<=m*6;i++)ta[i]=-1;
-  for(i=0;i<m;i++){
-    scanf("%d %d %d",&i,&j,&k);
-    add(i,j,k, 3);
-    add(i,k,j, 4);
-    add(j,i,k,-1);
-    add(j,k,i, 1);
-    add(k,i,j,-4);
-    add(k,j,i,-3);
+  for(i=0;i<=n*2;i++)ta[i]=-1;
+  while(m--){
+    scanf("%d %d %d %d",&i,&j,&k,&mi);
+    add(i,j,mi);
+    add(i,k,mi);
+    add(j,i,mi);
+    add(j,k,mi);
+    add(k,i,mi);
+    add(k,j,mi);
   }
   //for(i=0;i<n;i++)printf("%d ",ta[i+1]);printf("\n");
   //for(i=0;i<r;i++)printf("%d %d %d %d %d\n",i,to[i],nt[i],co[i],cu[i]);
-  for(i=0;i<r;i++)CO[i]=1e9;
+  for(i=0;i<n;i++)CO[i]=1e9;
   /*for(i=0;i<n;i++){
     printf(":%d\n",i+1);
     for(j=ta[i+1];j+1;j=nt[j])printf("%d ",to[j]);
     printf("\n");
     }//*/
-  for(i=ta[s];i+1;i=nt[i])hin(CO[id[R]=i]=co[i]);
-  mi=id[hout()];
+  //for(i=ta[s];i+1;i=nt[i])hin(CO[id[R]=i]=co[i]);
+  //mi=id[hout()];
+  CO[mi=s]=0;
   //for(i=1;i<R;i++)printf("%d ",id[i]);printf("\n");
   //printf("%d\n",mi);
   while(f[mi]-1){
     f[mi]=1;
-    for(i=ta[to[mi]];i+1;i=nt[i]){
-      if(i==cu[mi])continue;
+    for(i=ta[mi];i+1;i=nt[i]){
       if(CO[to[i]]>CO[mi]+co[i])hin(CO[id[R]=to[i]]=CO[mi]+co[i]);
     }
     while(f[mi]-1&&CO[i])mi=id[hout()];
   }
-  for(i=0;i<r;i++){//printf("%d ",CO[i]);
-    if(to[i]-t)continue;
-    ans=MIN(ans,CO[i]);
-  }//printf("\n");
-  printf("%d\n",ans);
+  printf("%d\n",CO[t]);
   return 0;
 }
