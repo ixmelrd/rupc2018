@@ -159,8 +159,9 @@ int main(){
   }
 
   for(i=0;i<10;i++){
-    MakeNum(n,d);
+    n=rnd.next(MIN_N,MAX_N);
     sprintf(s,"57_B_Same_One_%02d.in",i);
+    MakeNum(n,d);
     MakeIdx(n,a);
     MakeIdx(n,b);
     j=k=rnd.next(0,n-1);
@@ -179,6 +180,18 @@ int main(){
     out(n,d,a,b,s);
   }
 
+  for(i=0;i<10;i++){
+    n=rnd.next(MIN_N,MAX_N);
+    int c[]={0,n-1,1,n-2,(n+1)/2,n/2+1,n/2,(n+1)/2,2,n-3};
+    sprintf(s,"60_challenge_%02d.in",i);
+    MakeNum(n,d);
+    MakeIdx(n,a);
+    MakeIdx(n,b);
+    j=k=c[i];
+    while(j==k)k=rnd.next(0,n-1);
+    b[j]=b[k];
+    out(n,d,a,b,s);
+  }
   return 0;
 }
 
