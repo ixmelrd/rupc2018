@@ -19,11 +19,6 @@ void out(int n,int *d,int *a,int *b,char *s){
   fclose(f);
 }
 void MakeNum(int n,int *d){
-  int i,a=MAX_a/n*1.5;
-  d[0]=MIN(rnd.next(1,a),MAX_a-n+1);
-  for(i=1;i<n;i++)d[i]=MIN(rnd.next(1,a)+d[i-1],MAX_a-n+i+1);
-}
-void MakeNumSmall(int n,int *d){
   int i;
   for(i=0;i<n;i++)d[i]=i+1;
 }
@@ -44,7 +39,7 @@ int main(){
   for(i=0;i<10;i++){
     n=rnd.next(MIN_N,8);
     sprintf(s,"50_random_small_%02d.in",i);
-    MakeNumSmall(n,d);
+    MakeNum(n,d);
     MakeIdx(n,a);
     MakeRnd(n,b);
     out(n,d,a,b,s);
@@ -53,29 +48,13 @@ int main(){
   for(i=0;i<10;i++){
     n=rnd.next(MIN_N,8);
     sprintf(s,"50_random_small_Yes_%02d.in",i);
-    MakeNumSmall(n,d);
-    MakeIdx(n,a);
-    MakeIdx(n,b);
-    out(n,d,a,b,s);
-  }
-
-  for(i=0;i<10;i++){
-    n=rnd.next(MIN_N,8);
-    sprintf(s,"50_random_small_A_large_%02d.in",i);
-    MakeNum(n,d);
-    MakeIdx(n,a);
-    MakeRnd(n,b);
-    out(n,d,a,b,s);
-  }
-
-  for(i=0;i<10;i++){
-    n=rnd.next(MIN_N,8);
-    sprintf(s,"50_random_small_Yes_A_large_%02d.in",i);
     MakeNum(n,d);
     MakeIdx(n,a);
     MakeIdx(n,b);
     out(n,d,a,b,s);
   }
+
+
 
   for(i=0;i<10;i++){
     n=rnd.next(MIN_N,MAX_N);
@@ -95,14 +74,13 @@ int main(){
     out(n,d,a,b,s);
   }
 
-  for(i=0;i<5;i++){
-    n=MIN_N;
-    sprintf(s,"52_MIN_%02d.in",i);
-    MakeNum(n,d);
-    MakeIdx(n,a);
-    MakeRnd(n,b);
-    out(n,d,a,b,s);
-  }
+  n=MIN_N;
+  sprintf(s,"52_MIN_00.in");
+  MakeNum(n,d);
+  MakeIdx(n,a);
+  MakeRnd(n,b);
+  out(n,d,a,b,s);
+ 
 
   for(i=0;i<10;i++){
     n=MAX_N;
@@ -167,16 +145,6 @@ int main(){
     j=k=rnd.next(0,n-1);
     while(j==k)k=rnd.next(0,n-1);
     b[j]=b[k];
-    out(n,d,a,b,s);
-  }
-
-  for(i=0;i<10;i++){
-    n=rnd.next(MIN_N,MAX_N);
-    sprintf(s,"58_random_A_MAX_%02d.in",i);
-    MakeNum(n,d);
-    d[n-1]=MAX_a;
-    MakeIdx(n,a);
-    MakeRnd(n,b);
     out(n,d,a,b,s);
   }
 
