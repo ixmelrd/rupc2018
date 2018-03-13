@@ -4,7 +4,7 @@
 #define int long long
 #define loop(i, a, n) for (i = (a); i < (n); i++)
 #define rep(i, n) loop(i, 0, n)
-constexpr int INF = 1000000000;
+constexpr int INF = 1000000000000000000;
 constexpr int perm[3][2] = {{0, 1}, {1, 2}, {2, 0}};
 constexpr int pow3[12] = {1, 3, 9, 27, 81, 243, 729, 2187, 6561, 19683, 59049, 177147};
 using namespace std;
@@ -13,7 +13,7 @@ using Graph = vector<vector<pair<int, int>>>;
 using state = pair<int, int>;
 
 int n, m, s, t;
-int e[2000][4];
+int e[100000][4];
 int i, j;
 Graph g;
 priority_queue<state, vector<state>, greater<state>> q;
