@@ -12,7 +12,7 @@ int main() {
   inf.readEoln();
   vector<int> a(N), b(N);
   rep(i, N) {
-    a[i] = inf.readInt(MIN_a, MAX_a);
+    a[i] = inf.readInt(MIN_a, N);
     if (i < N - 1) {
       inf.readSpace();
     } else {
@@ -20,7 +20,7 @@ int main() {
     }
   }
   rep(i, N) {
-    b[i] = inf.readInt(MIN_b, MAX_b);
+    inf.readInt(MIN_b, N);
     if (i < N - 1) {
       inf.readSpace();
     } else {
@@ -33,12 +33,5 @@ int main() {
   if (s.size() != N) {
     cerr << "a_i must be unique" << endl;
     return 1;
-  }
-
-  rep(i, N) {
-    if (!s.count(b[i])) {
-      cerr << "Set S must contain b_" << i + 1 << "(=" << b[i] << ")" << endl;
-      return 1;
-    }
   }
 }
