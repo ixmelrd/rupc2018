@@ -264,6 +264,25 @@ void case_60_tree_graph() {
   }
 }
 
+void case_61_overflow() {
+  rep(num, 10) {
+    int N = rnd.next(MAX_N - 10, MAX_N);
+    int M = N - 1;
+    int s = 1, t = N;
+    vector<int> a, b, c, d(M);
+    a.reserve(M);
+    b.reserve(M);
+    a.reserve(M);
+    for (int v = 1; v <= N - 1; v++) {
+      a.emplace_back(v);
+      b.emplace_back(v + 1);
+      c.emplace_back(v + 1);
+    }
+    for (int &x : d) x = rnd.next(MAX_d - 10, MAX_d);
+    output(N, M, s, t, a, b, c, d, "61_overflow", num);
+  }
+}
+
 int main() {
   rnd.setSeed(time(nullptr) + getpid());
   case_50_small();
@@ -278,4 +297,5 @@ int main() {
   case_60_path_graph();
   case_60_star_graph();
   case_60_tree_graph();
+  case_61_overflow();
 }
