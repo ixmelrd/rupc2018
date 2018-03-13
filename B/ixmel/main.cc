@@ -53,17 +53,16 @@ int main(){
 	int n;
 	cin>>n;
 
-	vi in(n+1);
-	rep(i,n)cin>>in[n];
-	rep(i,n){
+	vvi in(2,vi(n));
+	rep(i,2)rep(j,n){
 		int a;
 		cin>>a;
-		in[a-1]=1;
+		in[i][a-1]=j+1;
 	}
 	
 	vi a(n,2),b(n,1);
 	bool h=true;
-	rep(i,n)if(in[i])a[i]=1;else h=false;
+	rep(i,n)if(in[1][i])a[in[0][i]-1]=1;else h=false;
 	if(h)cout<<"Yes"<<endl;
 	else{
 		cout<<"No"<<endl;

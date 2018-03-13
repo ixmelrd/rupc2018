@@ -26,7 +26,7 @@ using namespace std;
 //kaewasuretyuui
 typedef long long ll;
 //#define int ll
-typedef int Def;
+typedef ll Def;
 typedef pair<Def,Def> pii;
 typedef vector<Def> vi;
 typedef vector<vi> vvi;
