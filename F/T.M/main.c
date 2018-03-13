@@ -50,7 +50,7 @@ int main(){
   }printf("\n");return 0;//*/ 
   for(i=0;i<m+q;i++){
     scanf("%d %d %d",&a,&s[i],&t[i]);
-    hin(a);
+    hin(a*2+(i<m?1:0));
   }
   for(i=0;i<m+q;i++){
     /*for(a=b=1;a<2*T;a++){
