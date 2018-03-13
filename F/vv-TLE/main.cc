@@ -32,7 +32,10 @@ struct query {
   query(const int id, const int type, const int d, const int a, const int b) : id(id), type(type), d(d), a(a), b(b) {}
 };
 
-bool operator<(const query &a, const query &b) { return a.d < b.d; }
+bool operator<(const query &a, const query &b) {
+  if (a.d != b.d) return a.d < b.d;
+  return a.type < b.type;
+}
 
 int main() {
   int n, m, q;
@@ -42,18 +45,18 @@ int main() {
   rep(i, m) {
     int d, a, b;
     cin >> d >> a >> b;
-    v.emplace_back(0, 0, d, --a, --b);
+    v.emplace_back(0, 1, d, --a, --b);
   }
   rep(i, q) {
     int e, s, t;
     cin >> e >> s >> t;
-    v.emplace_back(i, 1, e, --s, --t);
+    v.emplace_back(i, 0, e, --s, --t);
   }
   sort(v.begin(), v.end());
   vector<int> ans(q);
   UFTree uf(n);
   for (auto &p : v) {
-    if (p.type == 0) {
+    if (p.type == 1) {
       loop(i, p.a, p.b) uf.unite(i, i + 1);
     } else {
       ans[p.id] = p.b <= p.a || uf.same(p.a, p.b);
