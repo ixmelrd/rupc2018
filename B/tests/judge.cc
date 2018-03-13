@@ -98,7 +98,7 @@ int main(int argc, char *argv[]){
   registerTestlibCmd(argc, argv);
 #endif
 
-  int n,a[4][100010],d[4][100010],i,j,ok=0;
+  int n,a[4][100010],r[100010],i,j,ok=0;
   char outs[100010],anss[5],no[]={"No"};
   
   // 入力ファイルの読み込み 
@@ -119,7 +119,7 @@ int main(int argc, char *argv[]){
     for(i=2;i<4;i++){
       for(j=0;j<n;j++){
 	if(j)ouf.readSpace();
-	a[i][j]=ouf.readInt(MIN_a,MAX_a);
+	a[i][j]=ouf.readInt(MIN_a,n);
       }
       ouf.readEoln();
     }
@@ -134,7 +134,7 @@ int main(int argc, char *argv[]){
   if(strcmp(anss,outs))WA();//Yes Noが違う
   if(strcmp(outs,no))AC();//Noでない->Yes AC!!
   
-  for(i=0;i<n;i++)hin(a[0][i]);
+  /*for(i=0;i<n;i++)hin(a[0][i]);
   for(i=0;i<n;i++){
     for(j=0;j<4;j++)d[j][i]=a[j][H[1]-1];
     hout();
@@ -144,11 +144,12 @@ int main(int argc, char *argv[]){
       if(a[i][j]-d[0][lb(0,n,a[i][j],d[0])])WA();//存在しない
     }
   }
-  
+  //*/
+  for(i=0;i<n;i++)r[a[0][i]]=i;
   for(i=0;i<n;i++){
-    j=lb(0,n,d[1][i],d[0]);
-    if(d[2][j]!=d[3][j])WA();
-    if(d[2][i]!=d[3][i])ok=1;
+    j=r[a[1][i]];
+    if(a[2][j]!=a[3][j])WA();
+    if(a[2][i]!=a[3][i])ok=1;
   }
   // AC();
   if(ok)AC();
