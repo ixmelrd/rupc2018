@@ -23,6 +23,7 @@ void challenge00(){
 int main() {
   int i,n,a;
   char d[10010],s[100],g[5]={"5103"};
+  rnd.setSeed(time(0)+getpid());
 
   for(i=0;i<10;i++){
     n=rnd.next(MIN_digits_of_N,10);
