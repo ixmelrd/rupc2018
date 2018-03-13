@@ -46,9 +46,9 @@ void challenge00(){
 void challenge01(){
   int n=MAX_N,m=n/2,q=MAX_Q,i;
   char s[100]={"60_challenge_01.in"};
-  for(i=0;i<m;i++){
-    a[i]=i*2;
-    b[i]=i*2+1;
+  for(i=1;i<m;i++){
+    a[i]=i*2-1;
+    b[i]=i*2  ;
     t[i]=rnd.next(MIN_D,MAX_D);
   }
   for(i=0;i<q;i++){
@@ -127,7 +127,7 @@ int main() {
   }
 
   challenge00();
-  //challenge01();
+  challenge01();
 
   
   return 0;
