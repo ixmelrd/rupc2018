@@ -1,7 +1,6 @@
 #include<stdio.h>
-int MIN(int a,int b){return a<b?a:b;}
-int ta[100010],to[100010],co[100010],nt[100010],cu[100010],r=0;
-int R=1,C=1,H[2000010],N[2000010],CO[200010],id[200010],f[100010];
+int ta[100010],to[100010],co[100010],nt[100010],r=0;
+long long R=1,C=1,H[2000010],N[2000010],CO[100010],id[200010],f[100010];
 //評価関数（いまはMIN）
 int hyouka(int a,int b){
   if(C<b)return 1;
@@ -9,7 +8,7 @@ int hyouka(int a,int b){
   return N[H[a]]<N[H[b]]?1:0;
 }
 //挿入関数
-void hin(int a){
+void hin(long long a){
   int i=C++;
   for(N[H[0]=R]=a;hyouka(0,i/2);i/=2)H[i]=H[i/2];
   H[i]=R++;
@@ -29,7 +28,7 @@ void add(int a,int b,int c){
 int main(){
   int n,m,s,t,i,j,k,mi;
   scanf("%d %d %d %d",&n,&m,&s,&t);
-  for(i=0;i<=n*2;i++)ta[i]=-1;
+  for(i=0;i<=n;i++)ta[i]=-1;
   while(m--){
     scanf("%d %d %d %d",&i,&j,&k,&mi);
     add(i,j,mi);
@@ -39,26 +38,15 @@ int main(){
     add(k,i,mi);
     add(k,j,mi);
   }
-  //for(i=0;i<n;i++)printf("%d ",ta[i+1]);printf("\n");
-  //for(i=0;i<r;i++)printf("%d %d %d %d %d\n",i,to[i],nt[i],co[i],cu[i]);
-  for(i=0;i<n;i++)CO[i]=1e9;
-  /*for(i=0;i<n;i++){
-    printf(":%d\n",i+1);
-    for(j=ta[i+1];j+1;j=nt[j])printf("%d ",to[j]);
-    printf("\n");
-    }//*/
-  //for(i=ta[s];i+1;i=nt[i])hin(CO[id[R]=i]=co[i]);
-  //mi=id[hout()];
+  for(i=1;i<=n;i++)CO[i]=1e18;
   CO[mi=s]=0;
-  //for(i=1;i<R;i++)printf("%d ",id[i]);printf("\n");
-  //printf("%d\n",mi);
   while(f[mi]-1){
     f[mi]=1;
     for(i=ta[mi];i+1;i=nt[i]){
       if(CO[to[i]]>CO[mi]+co[i])hin(CO[id[R]=to[i]]=CO[mi]+co[i]);
     }
-    while(f[mi]-1&&CO[i])mi=id[hout()];
+    while(f[mi]&&C-1)mi=id[hout()];
   }
-  printf("%d\n",CO[t]);
+  printf("%lld\n",CO[t]);
   return 0;
 }
