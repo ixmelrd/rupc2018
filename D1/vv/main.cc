@@ -20,7 +20,7 @@ template<typename CommutativeGroup> class RangeFold {
 public:
   RangeFold(const std::vector<T> &raw) : cache(raw) {
     size_t w = cache.size();
-    loop(i, 1, w) cache[i] += cache[i - 1];
+    loop(i, 1, w) cache[i] = g(cache[i], cache[i - 1]);
   }
 
   T fold(const int l, const int r) { // [l, r)
