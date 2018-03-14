@@ -52,6 +52,7 @@ public:
     while (size < n) size *= 2;
     tree.assign(size * 2, x);
     lazy.assign(size * 2, actionM.id());
+    for (int i = size - 1; i >= 1; i--) tree[i] = foldM(tree[i * 2], tree[i * 2 + 1]);
   }
 
   template<typename InputIterator> LazySegTree(InputIterator first, InputIterator last) {
