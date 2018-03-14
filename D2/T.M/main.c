@@ -1,5 +1,5 @@
 #include<stdio.h>
-int ta[100010],to[100010],co[100010],nt[100010],r=0;
+int ta[100010],to[600010],co[600010],nt[600010],r=0;
 long long R=1,C=1,H[2000010],N[2000010],CO[100010],id[200010],f[100010];
 //評価関数（いまはMIN）
 int hyouka(int a,int b){
