@@ -3,6 +3,9 @@
 #include <numeric>
 #include <functional>
 #include <algorithm>
+#include <tuple>
+#include <algorithm>
+#include <climits>
 using namespace std;
 
 const int MAX_N = 100000;

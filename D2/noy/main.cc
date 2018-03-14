@@ -1,6 +1,9 @@
 #include <iostream>
 #include <vector>
 #include <queue>
+#include<tuple>
+#include<algorithm>
+#include<climits>
 using namespace std;
 
 void addEdge(vector<vector<pair<int, int>>>& g, int a, int b, int c){
@@ -12,7 +15,7 @@ void addEdge(vector<vector<pair<int, int>>>& g, int a, int b, int c){
 vector<int> cost;
 
 int bfs(vector<vector<pair<int, int>>>& g, int s, int t, int v){
-	vector<vector<int>> dis(v, vector<int>(v,1e8));
+	static vector<vector<int>> dis(v, vector<int>(v,1e8));
 	dis[s][s] = 0;
 	//cout << s << ' ' << t << endl;
 
