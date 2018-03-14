@@ -74,12 +74,13 @@ class DIJ{
 		while(!q.empty()){
 			pii p=q.top();
 			q.pop();
-			int pos=p.second,cost=-p.first;
+			int pos=p.second;
+			ll cost=-p.first;
 			if(cost>d[pos])continue;
 			rep(i,G[pos].size()){
 				edge e=G[pos][i];
 				int to=e.to;
-				int nowcost=cost+e.cost;
+				ll nowcost=cost+e.cost;
 				if(nowcost<d[to]){
 					d[to]=nowcost;
 					q.push(pii(-d[to],to));
