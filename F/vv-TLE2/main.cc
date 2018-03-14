@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <map>
 #include <numeric>
 #include <queue>
 #include <vector>
@@ -38,45 +39,27 @@ public:
   const_iterator end() const { return g.end(); }
 };
 
-struct query {
-  int id, type, d, a, b;
-  query(const int id, const int type, const int d, const int a, const int b) : id(id), type(type), d(d), a(a), b(b) {}
-};
-
-bool operator<(const query &a, const query &b) {
-  if (a.d != b.d) return a.d < b.d;
-  return a.type < b.type;
-}
-
 int main() {
   int n, m, q;
   cin >> n >> m >> q;
-  vector<query> v;
-  v.reserve(m + q);
-  rep(i, m) {
-    int d, a, b;
-    cin >> d >> a >> b;
-    v.emplace_back(0, 1, d, --a, --b);
-  }
-  rep(i, q) {
-    int e, s, t;
-    cin >> e >> s >> t;
-    v.emplace_back(i, 0, e, --s, --t);
-  }
-  sort(v.begin(), v.end());
+  multimap<int, int> w;
+  vector<int> d(m + q), a(m + q), b(m + q);
+  rep(i, m + q) cin >> d[i] >> a[i] >> b[i];
+  rep(i, m + q) w.emplace(d[i] << 1 | (i < m), i);
   Graph g(n);
   loop(i, 1, n) g.addArc(i, i - 1);
   vector<int> ans(q);
-  for (auto &p : v) {
-    if (p.type == 1) {
-      g.addArc(p.a, p.b);
+  for (auto &p : w) {
+    int i = p.second;
+    if (i < m) {
+      g.addArc(a[i] - 1, b[i] - 1);
     } else {
       vector<int> done(n);
       queue<int> que;
-      for (que.emplace(p.a); que.size(); que.pop()) {
+      for (que.emplace(a[i] - 1); que.size(); que.pop()) {
         int u = que.front();
-        if (u == p.b) {
-          ans[p.id] = true;
+        if (u == b[i] - 1) {
+          ans[i - m] = true;
           break;
         }
         if (done[u]) continue;
@@ -85,5 +68,5 @@ int main() {
       }
     }
   }
-  for(auto &x: ans) cout << (x ? "Yes" : "No") << endl;
+  for (auto &x : ans) cout << (x ? "Yes" : "No") << endl;
 }

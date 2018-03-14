@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <map>
 #include <numeric>
 #include <vector>
 #define loop(i, a, n) for (int i = (a); i < (n); i++)
@@ -27,40 +28,22 @@ public:
   }
 };
 
-struct query {
-  int id, type, d, a, b;
-  query(const int id, const int type, const int d, const int a, const int b) : id(id), type(type), d(d), a(a), b(b) {}
-};
-
-bool operator<(const query &a, const query &b) {
-  if (a.d != b.d) return a.d < b.d;
-  return a.type < b.type;
-}
-
 int main() {
   int n, m, q;
   cin >> n >> m >> q;
-  vector<query> v;
-  v.reserve(m + q);
-  rep(i, m) {
-    int d, a, b;
-    cin >> d >> a >> b;
-    v.emplace_back(0, 1, d, --a, --b);
-  }
-  rep(i, q) {
-    int e, s, t;
-    cin >> e >> s >> t;
-    v.emplace_back(i, 0, e, --s, --t);
-  }
-  sort(v.begin(), v.end());
+  multimap<int, int> w;
+  vector<int> d(m + q), a(m + q), b(m + q);
+  rep(i, m + q) cin >> d[i] >> a[i] >> b[i];
+  rep(i, m + q) w.emplace(d[i] << 1 | (i < m), i);
   vector<int> ans(q);
   UFTree uf(n);
-  for (auto &p : v) {
-    if (p.type == 1) {
-      loop(i, p.a, p.b) uf.unite(i, i + 1);
+  for (auto &p : w) {
+    int i = p.second;
+    if (i < m) {
+      loop(j, a[i] - 1, b[i] - 1) uf.unite(j, j + 1);
     } else {
-      ans[p.id] = p.b <= p.a || uf.same(p.a, p.b);
+      ans[i - m] = b[i] <= a[i] || uf.same(a[i] - 1, b[i] - 1);
     }
   }
-  for(auto &x: ans) cout << (x ? "Yes" : "No") << endl;
+  for (auto &x : ans) cout << (x ? "Yes" : "No") << endl;
 }
