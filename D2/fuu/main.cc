@@ -3,7 +3,7 @@
 #include <algorithm>
 #include <set>
 #include <queue>
-#define INF 1e10
+#define INF 1e14
 #define int long long
 using namespace std;
 
@@ -18,7 +18,7 @@ struct Edge{
 using Graph = vector<vector<Edge>>;
 
 vector<int> Dij(Graph&g,int s){
-    using state = pair<int,int>;//コストの総和、どこから見ているのか
+    using state = pair<int,int>;
     priority_queue<state,vector<state>,greater<state>> pq;
     vector<int> dis(g.size(),INF);
     dis[s]=0;
