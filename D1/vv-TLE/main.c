@@ -21,7 +21,7 @@ int main() {
   {u32 i;for(i=W++;i>0&&0.0<H[(i-1)>>1].d;i=(i-1)>>1)H[i]=H[(i-1)>>1];H[i].v=0;H[i].d=0.0;}
   while(W){
     u32 Y=0,j;S p=H[0],L=H[--W];
-    while((Z)+1<W&&L.d>H[j=((Z)+1+((Z)+2<W&&H[(Z)+1].d>H[(Z)+2].d))].d)H[Y]=H[j],Y=j;
+    while(Z+1<W&&L.d>H[j=(Z+1+(Z+2<W&&H[Z+1].d>H[Z+2].d))].d)H[Y]=H[j],Y=j;
     H[Y]=L;if(p.d>d[p.v])continue;
     for(u16 i=0;i<A[p.v].s;i++)if(p.d+A[p.v].e[i].w<d[A[p.v].e[i].t]){
       d[A[p.v].e[i].t]=p.d+A[p.v].e[i].w;u32 k;
