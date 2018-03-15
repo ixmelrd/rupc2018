@@ -105,6 +105,12 @@ void case_61_overflow() {
   }
 }
 
+void case_62_float_killer() {
+  int N = 301, M = 137;
+  vector<int> a(N, 396854019);
+  output(N, M, a, "62_float_killer");
+}
+
 int main() {
   rnd.setSeed(time(nullptr) + getpid());
   case_50_small();
@@ -116,4 +122,5 @@ int main() {
   case_53_Nmax_Mmax();
   case_60_constant();
   case_61_overflow();
+  case_62_float_killer();
 }
