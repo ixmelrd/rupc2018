@@ -4,7 +4,7 @@
 #define I(n,t) do c=getchar();while(c<'0');while('0'<=c&&c<='9'){n=n*10+(t)(c-'0');c=getchar();}
 #define Z (Y<<1)
 typedef uint16_t u16;typedef uint32_t u32;typedef uint64_t u64;
-typedef struct{u32 t;double w;} E;typedef struct{E*e;u16 c,s;} D;typedef struct{u32 v;double d;} S;
+typedef struct{u32 t;double w;}E;typedef struct{E*e;u16 c,s;}D;typedef struct{u32 v;double d;}S;
 u32 W;S H[251001];
 
 int main() {
