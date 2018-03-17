@@ -55,17 +55,16 @@ class rangeUpdateQuery {
 			op = f;
 			identity = e;
 
+			fill(dat, dat + MAX_N * 4, identity);
+			fill(dat_lazy, dat_lazy + MAX_N * 4, identity);
+
 			int n_ = a.size();
 			n = 1;
 			while(n <= n_) n *= 2;
-			for(int i = 0; i < n * n; i++){
-				dat_lazy[i] = identity;
-			}
-			for(int i = n; i < n * n; i++){
-				dat[i] = a[i - n];
-			}
-			for(int i = n - 1; i >= 1; i--){
-				dat[i] = min(dat[i * 2], dat[i * 2 + 1]);
+			copy(begin(a), end(a), begin(dat) + n);
+
+			for(int i = n_ - 1; i > 0; i--){
+				dat[i] = op(dat[i * 2], dat[i * 2 + 1]);
 			}
 		}
 		int query(int a, int b){
@@ -96,12 +95,14 @@ int main() {
 		cin >> p.d >> p.a >> p.b;
 	}
 
+
 	vector<Query> q(Q);
 	for (int i = 0; i < Q; i++) {
 		auto& p = q[i];
 		p.id = i;
 		cin >> p.d >> p.s >> p.t;
 	}
+
 
 	sort(e.begin(), e.end(), [](const Edge& l, const Edge& r){ return l.d < r.d; });
 	sort(q.begin(), q.end(), [](const Query& l, const Query& r){ return l.d < r.d; });
@@ -114,7 +115,7 @@ int main() {
 
 	auto it = e.begin();
 	for (int i = 0; i < Q; i++) {
-		while (it != e.end() and (*it).d <= q[i].d) {
+		while (it != e.end() and (*it).d < q[i].d) {
 			auto p = *it;
 
 			// segTree は 1-index
@@ -133,7 +134,8 @@ int main() {
 		//for (int i = 0; i < N; i++) { if(i) cout << ' '; cout << mini.get(i); } cout << endl;
 
 		auto& p = q[i];
-		p.ans = maxi.get(p.s - 1) >= p.t ? true : false;
+		//cout <<  maxi.get(p.s - 1) << ' ' <<  p.t << endl;
+		p.ans = maxi.get(p.s - 1) >= p.t;
 	}
 
 	sort(q.begin(), q.end(), [](const Query& l, const Query& r){ return l.id < r.id; });

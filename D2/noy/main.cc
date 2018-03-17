@@ -6,95 +6,73 @@
 #include<climits>
 using namespace std;
 
-void addEdge(vector<vector<pair<int, int>>>& g, int a, int b, int c){
-	//cout << a << ' ' << b << ' ' << c << endl;
-	g[a].emplace_back(b,c);
-	g[b].emplace_back(a,c);
-}
+#define int long long
 
-vector<int> cost;
+const int INF = (1LL << 60);
 
-int bfs(vector<vector<pair<int, int>>>& g, int s, int t, int v){
-	static vector<vector<int>> dis(v, vector<int>(v,1e8));
-	dis[s][s] = 0;
-	//cout << s << ' ' << t << endl;
+class Edge{
+	public:
+		int to, cost;
+		Edge(int to, int cost) : to(to) ,cost(cost) {}
+};
 
-	queue<pair<int, int>> q;
-	q.push(make_pair(s, s));
-
-	while(not q.empty()){
-		pair<int, int> tmp = q.front(); q.pop();
-		int cur, last;
-		tie(cur, last) = tmp;
-
-		for(auto e : g[cur]){
-			if(last / 3 == e.first / 3) continue;
-			//if(pre / 3 == cur / 3 and cur / 3 == e.first / 3) continue;
-			//if(pre == e.first) continue;
-			if(e.second == 0){
-				if(dis[e.first][last] > dis[cur][last]){
-					dis[e.first][last] = dis[cur][last];
-					q.push(make_pair(e.first, last));
-				}
-			}else{
-				if(dis[e.first][cur] > dis[cur][last] + e.second){
-					dis[e.first][cur] = dis[cur][last] + e.second;
-					q.push(make_pair(e.first, cur));
-				}
-			}
+class Node{
+	public:
+		int dis;
+		bool isUsed;
+		Node(){
+			this->dis = INF;
+			this->isUsed = 0;
 		}
-	}
+};
 
-	//for (int i = 0; i < dis.size(); i++) { cout << i << ' ' << dis[i] << endl; }
+typedef vector<vector<Edge>> AdjList;
 
-	int mini = 1e8;
-	for (int i = 0; i < v; i++) {
-		mini = min(mini, dis[t][i]);
-	}
-	return mini;
+int dijkstra(AdjList g, int start, int goal, int n){
+    vector<Node> node(n);
+    priority_queue<int, vector<pair<int, int>>, greater<pair<int, int>>> q;
+
+    q.push(make_pair(0, start));
+    node[start].dis = 0;
+
+    pair<int, int> u;
+    while(not q.empty()){
+        u = q.top(); q.pop();
+        int current = u.second;
+        node[current].isUsed = 1;
+
+        for(int i = 0; i < g[current].size(); i++){
+            int next = g[current][i].to;
+            if(node[next].isUsed == 0){
+                if(node[next].dis > node[current].dis + g[current][i].cost){
+                    node[next].dis = node[current].dis + g[current][i].cost;
+                    q.push(make_pair(node[next].dis, next));
+
+                }
+            }
+        }
+    }
+    return node[goal].dis;
 }
 
-int main() {
+void addEdge(AdjList& g, int from, int to, int cost){
+	g[from].emplace_back(to, cost);
+	g[to].emplace_back(from, cost);
+}
+
+signed main() {
 	int n, m, s, t;
 	cin >> n >> m >> s >> t;
-	
-	vector<int> a(m), b(m), c(m);
+
+	AdjList g(n);
 	for (int i = 0; i < m; i++) {
-		cin >> a[i] >> b[i] >> c[i];
-		a[i]--; b[i]--; c[i]--;
+		int a, b, c, d;
+		cin >> a >> b >> c >> d;
+		a--; b--; c--;
+		addEdge(g, a, b, d);
+		addEdge(g, a, c, d);
+		addEdge(g, b, c, d);
 	}
 
-	vector<vector<pair<int, int>>> g(3 * m + 2);
-	vector<vector<int>> tmp(n);
-	for (int i = 0; i < m; i++) {
-		cost.emplace_back(max({a[i], b[i], c[i]}) + 1);
-		int x = i * 3;
-		int y = i * 3 + 1;
-		int z = i * 3 + 2;
-		if(a[i] != b[i]) addEdge(g, x, y, c[i] + 1);
-		addEdge(g, x, z, b[i] + 1);
-		if(b[i] != c[i]) addEdge(g, y, z, a[i] + 1);
-
-		tmp[ a[i] ].emplace_back(x);
-		if(a[i] != b[i]) tmp[ b[i] ].emplace_back(y);
-		if(b[i] != c[i]) tmp[ c[i] ].emplace_back(z);
-	}
-
-	for(auto v : tmp){
-		for (int i = 0; i < v.size(); i++) {
-			for (int j = i + 1; j < v.size(); j++) {
-				addEdge(g, v[i], v[j], 0);
-			}
-		}
-	}
-
-	for (int i = 0; i < tmp[s - 1].size(); i++) {
-		addEdge(g, 3 * m, tmp[s - 1][i], 0);
-	}
-
-	for (int i = 0; i < tmp[t - 1].size(); i++) {
-		addEdge(g, 3 * m + 1, tmp[t - 1][i], 0);
-	}
-
-	cout << bfs(g, 3 * m, 3 * m + 1, 3 * m + 2) << endl;
+	cout << dijkstra(g, s - 1, t - 1, n) << endl;
 }
