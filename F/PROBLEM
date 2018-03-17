@@ -8,5 +8,5 @@
 problem(title = "",
         id = "F",
         reference_solution = "T.M",
-        time_limit = 1.0,
+        time_limit = 2.0,
         )
