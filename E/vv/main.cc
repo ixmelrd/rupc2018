@@ -3,16 +3,7 @@
 #define int long long
 #define loop(i, a, n) for (int i = (a); i < (n); i++)
 #define rep(i, n) loop(i, 0, n)
-constexpr int MOD = 1000000000 + 7;
 using namespace std;
-
-template<int mod> struct modint {
-  int v;
-  modint(int a = 0) : v(((a % mod) + mod) % mod) {}
-  modint operator+(const modint<mod> &b) const { return (v + b.v) % mod; }
-  friend modint<mod> &operator+=(modint<mod> &a, const modint<mod> &b) { return a = a + b; }
-  friend ostream &operator<<(ostream &os, const modint<mod> &a) { return os << a.v; }
-};
 
 istream &operator>>(istream &is, vector<int> &v) {
   string s;
@@ -22,16 +13,10 @@ istream &operator>>(istream &is, vector<int> &v) {
   return is;
 }
 
-template<typename T>
-using v = vector<T>;
-
-template<typename T>
-void resize(vector<T> &v, const int head) { v.resize(head); }
-
-template<typename T, typename ... X>
-void resize(vector<T> &v, const int head, const X &... tail) {
-  v.resize(head);
-  for (auto &x: v) resize(x, tail...);
+template <typename Head, typename Value> auto vectors(const Head &head, const Value &v) { return vector<Value>(head, v); }
+template <typename Head, typename... Tail> auto vectors(Head x, Tail... tail) {
+  auto inner = vectors(tail...);
+  return vector<decltype(inner)>(x, inner);
 }
 
 signed main() {
@@ -39,8 +24,7 @@ signed main() {
   cin >> s;
   int n = static_cast<int>(s.size());
 
-  v<v<v<v<modint<MOD>>>>> dp;
-  resize(dp, n + 1, 2, 5, 2);
+  auto dp = vectors(n + 1, 2, 5, 2, 0LL);
   dp[0][0][0][0] = 1;
 
   auto f = [](int k, int l, int m) -> int {
