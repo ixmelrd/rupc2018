@@ -4,7 +4,6 @@
 #define rep(i,a) loop(i,0,a)
 using namespace std;
 
-const long long M = 1e9 + 7;
 long long dp[10001][2][5][2];
 
 int main(){
@@ -18,18 +17,18 @@ int main(){
 
 		rep(d,lim + 1){
 			if(k == 4){		// ごちうさ数が含まれることが確定している
-				(dp[i + 1][j or d < lim][k][d == 5] += dp[i][j][k][l]) %= M;
+				dp[i + 1][j or d < lim][k][d == 5] += dp[i][j][k][l];
 			}else if(		// ごちうさ数の遷移が行える
 					(k == 0 and d == 5) or
 					(k == 1 and d == 1) or
 					(k == 2)			or
 					(k == 3 and d == 3)
 			  ){
-				(dp[i + 1][j or d < lim][k + 1][d == 5] += dp[i][j][k][l]) %= M;
+				dp[i + 1][j or d < lim][k + 1][d == 5] += dp[i][j][k][l];
 			}else if(k == 3 and d == 1 and l == 1){ // 5151...に対応する
-				(dp[i + 1][j or d < lim][2][d == 5] += dp[i][j][k][l]) %= M;
+				dp[i + 1][j or d < lim][2][d == 5] += dp[i][j][k][l];
 			}else{			// ごちうさ数にならない。d == 5のときは一文字目まで一致したと判定する。
-				(dp[i + 1][j or d < lim][d == 5][d == 5] += dp[i][j][k][l]) %= M;
+				dp[i + 1][j or d < lim][d == 5][d == 5] += dp[i][j][k][l];
 			}
 
 		}
@@ -37,7 +36,7 @@ int main(){
 
 	long long ans = 0;
 	rep(i,2){
-		(ans += dp[n.size()][0][4][i] + dp[n.size()][1][4][i]) %= M;
+		ans += dp[n.size()][0][4][i] + dp[n.size()][1][4][i];
 	}
 
 	cout << ans << endl;
