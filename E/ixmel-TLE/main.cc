@@ -64,7 +64,7 @@ int main(){
 	ll n;
 	cin>>n;
 	if(n<0)return 0;
-	int out=0;
+	ll out=0;
 	loop(i,5103,n+1){
 		if(i%100000==0)cout<<i<<endl;
 		string s=to_string(i);

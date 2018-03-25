@@ -49,7 +49,7 @@ const double EPS=1e-7;
 Def inf = sizeof(Def) == sizeof(long long) ? 2e18 : 1e9+10;
 int dx[]={0,1,0,-1};
 int dy[]={1,0,-1,0};
-int dp[100010][5][2][2],MOD=1000000007;
+ll dp[100010][5][2][2];
 int main(){
 	dp[0][0][0][0]=1;
 	
@@ -65,9 +65,9 @@ int main(){
 			else if(l&&x==1)J=2;
 			else if(x==5)J=1;
 			else J=0;
-		(dp[I][J][K][L]+=dp[i][j][k][l])%=MOD;
+		dp[I][J][K][L]+=dp[i][j][k][l];
 	}
-	cout<<(dp[n][4][0][0]+dp[n][4][1][0])%MOD<<endl;
+	cout<<dp[n][4][0][0]+dp[n][4][1][0]<<endl;
 }
 
 
