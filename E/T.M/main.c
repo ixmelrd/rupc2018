@@ -1,6 +1,7 @@
 #include<stdio.h>
 int main(){
-  int M=1e9+7,i,j,k,l,nj,nk,lim,d[100010][6][2]={1};
+  int i,j,k,l,nj,nk,lim;
+  long long d[20][6][2]={1};
   char s[100010];
   scanf("%s",s);
   for(i=0;s[i];i++){
@@ -18,14 +19,11 @@ int main(){
 	  if(l==3&&j==4)nj=5;
 	  if(l==1&&j==4)nj=2;
 	  if(      j==5)nj=5;
-	  d[i+1][nj][nk]=(d[i+1][nj][nk]+d[i][j][k])%M;
+	  d[i+1][nj][nk]+=d[i][j][k];
 	}
       }
     }
   }
-  printf("%d\n",(d[i][5][0]+d[i][5][1])%M);
+  printf("%lld\n",d[i][5][0]+d[i][5][1]);
   return 0;
 }
-	    
-	      
-	
