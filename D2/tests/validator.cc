@@ -52,9 +52,6 @@ int main(){
         int d = inf.readInt(1,MAX_d);
         inf.readEoln();
 
-		assert(a <= b);
-		assert(b <= c);
-
         a--; b--; c--;
         g[a].emplace_back(b);
         g[b].emplace_back(a);
