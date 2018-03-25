@@ -22,7 +22,7 @@ src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 
 <h2>問題</h2>
 <p>
- AORイカちゃんは集合 $S = {a_1, ..., a_N}$ と関数 $f: S→S$を作った。$f(a_i) = b_i$ である。
+AORイカちゃんは集合 $S = \{a_1, ..., a_N\}$ と関数 $f: S→S$を作った。$f(a_i) = b_i$ である。
 任意の集合 $S$ の要素 $x$ について、$g(f(x)) = h(f(x))$ を満たす全ての関数 $g, h: S→S$ が、$g(x) = h(x)$ を満たすかどうか判定し、満たさない場合は反例を一つ構成せよ。
 </p>
 
@@ -32,28 +32,31 @@ src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML">
 <li>$1 \le N \le 10^5$</li>
 <li>$1 \le a_i,b_i \le N$</li>
 <li>$a_i \neq a_j (i \neq j)$</li>
-<li> $a_i$ は整数である </li>
+<li>入力はすべて整数である。</li>
 </ul>
 
 <h2>入力:</h2>
 <p>
-入力は以下の形式で標準入力から与えられる。
-</p>
-<p>
 $N$<br>
-$a_1 ... a_N$<br>
-$b_1 ... b_N$<br>
+$a_1 \cdots a_N$<br>
+$b_1 \cdots b_N$<br>
 </p>
 
 <h2>出力:</h2>
 <p>
 条件を満たす場合は<br>
-Yes<br>
+<strong>Yes</strong>
+</p>
 
+<p>
 条件を満たさない場合は、反例を $g(a_i) = c_i, h(a_i) = d_i$ として<br>
-No<br>
-$c_1 ... c_N$<br>
-$d_1 ... d_N$<br>
+<strong>No</strong><br>
+$c_1 \cdots c_N$<br>
+$d_1 \cdots d_N$<br>
+</p>
+
+<p>
+を出力せよ。また末尾に改行を出力せよ。
 </p>
 
 <h2>sample 1</h2>

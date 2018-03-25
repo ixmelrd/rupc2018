@@ -88,12 +88,12 @@ void case_54_eaten() {
 
 void case_60_challenge() {
 	int N = MAX_N;
-	vector<int> A(N, rnd.next(MIN_A, MAX_A));
+	vector<int> A(N, MAX_A);
 	output(N, A, "60_challenge", 0);
 }
 
 void case_61_challenge() {
-	rep(num, 5) {
+	rep(num, 10) {
 		int N = MAX_N;
 		output(N, getArray(N, 3), "61_challenge", num);
 	}

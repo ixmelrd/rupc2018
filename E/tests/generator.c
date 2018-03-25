@@ -68,15 +68,17 @@ int main() {
     out(d,s);
   }
 
-  for(i=0;i<10;i++){
-    n=rnd.next(MIN_digits_of_N,MAX_digits_of_N);
-    sprintf(s,"56_in_51-3_%02d.in",i);
-    MakeNum(n,d);
-    a=rnd.next(0,n-4);
-    d[a  ]='5';
-    d[a+1]='1';
-    d[a+3]='3';
-    out(d,s);
+  if(MAX_digits_of_N>4){
+    for(i=0;i<10;i++){
+      n=rnd.next(4,MAX_digits_of_N);
+      sprintf(s,"56_in_51-3_%02d.in",i);
+      MakeNum(n,d);
+      a=rnd.next(0,n-4);
+      d[a  ]='5';
+      d[a+1]='1';
+      d[a+3]='3';
+      out(d,s);
+    }
   }
   
   challenge00();
