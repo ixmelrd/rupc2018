@@ -66,7 +66,6 @@ int main(){
 	if(n<0)return 0;
 	ll out=0;
 	for(ll i=5103;i<=n;i++){
-		if(i%100000==0)cout<<i<<endl;
 		string s=to_string(i);
 		out+=f(s);
 	}
